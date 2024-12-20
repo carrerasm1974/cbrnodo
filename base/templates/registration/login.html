@@ -1,0 +1,28 @@
+
+
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <body class="text-center">
+        <form class="form-signin m-auto" method="POST">
+        <img class="mb-4" src="{% static 'nodo.jpeg' %}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Sign  In</h1>
+         {% csrf_token %}
+        {{form}} 
+        {% comment %} <label for="inputEmail" class="sr-only top">Username</label>
+        <input id="usuario" class="form-control" placeholder="username" required autofocus> {% endcomment %}
+        {% comment %} <label for="inputPassword" class="sr-only top">Password</label>
+        <input type="password" id="pwd" class="form-control" placeholder="Password" required> {% endcomment %}
+
+        <button class="btn btn-lg btn-primary btn-block top" type="submit">Sign in</button>
+
+        </form>
+    </body>
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Configuración{% endblock %}
+
+{% block contenedor %}
+
+<div class="container">
+  <h2 class="borde">Configuración</h2>    
+
+  <body>
+
+    <div class="p-2 borde color flex-grow-1">
+
+      {% if hilos %}
+        <div>{{hilos.message}}</div>
+      {%endif%}
+      
+      <div class="p-2 borde color chart-1 sep-bloque">
+  
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="abrir_modal('{% url 'edit_canal' %}')">
+          Launch demo modal
+        </button> 
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_edicion" tabindex="-1" role="dialog">
+        </div>
+      </div>
+
+      <div class="p-2 borde color chart-1 sep-bloque">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="abrir_modal('{% url 'modal_edicion' %}')">
+          Launch demo modal
+        </button> 
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_edicion" tabindex="-1" role="dialog">
+        </div>
+      </div>
+
+    </div> 
+  
+  
+  </body>
+
+</div>
+
+{% endblock contenedor %}
+
+{% block extra_js %}
+  <script type="text/javascript">
+    function abrir_modal(url) {
+      $('#modal_edicion').load(url, function(){
+        $(this).modal('show')
+      });
+    }
+
+  </script>
+{% endblock extra_js %}

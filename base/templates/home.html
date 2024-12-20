@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenedor %}
+
+    <div class="d-flex flex-column p-2 borde flex-grow-1 ">
+        <div class="d-flex color sep-bloque">
+            <div class="flex-fill p-2 borde color">Item 2</div>
+            <div class="flex-fill p-2 borde color">Item 3</div>
+        </div>
+        <div class="p-2 borde chart-1 sep-bloque">
+            <div>{{ia | safe}}</div>
+        </div>
+        <div class="p-2 borde color chart-1">Item 5</div>
+    </div>
+  
+{% endblock contenedor %}

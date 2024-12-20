@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Configuración{% endblock %}
+
+{% block contenedor %}
+
+
+<body>
+  <div class="container">
+    <div class="d-flex flex-column p-2 borde flex-grow-1 ">
+      
+        <h3 class="borde">Configuración Canales</h3>    
+
+        {% for canal in canales_cargas %}
+        <div class="celda-tabla borde">Corrientes de carga</div>   
+
+        <table class="table table-striped borde">
+          <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Escala</th>
+                <th>Unidad</th>
+                <th>Valor Actual</th>
+                <th>Última Actualización</th>
+                <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{ canal.nombre }}</td>
+                <td>{{ canal.estado }}</td>
+                <td>{{ canal.escala }}</td>
+                <td>{{ canal.unidad }}</td>
+                <td>{{ canal.valor_actual }}</td>
+                <td>{{ canal.fecha_actualizacion }}</td>
+                <td>
+                  <button type="button" class="btn boton-celda" id="carga" data-toggle="modal" data-target="#modal_carga" data-url="{% url 'edit_canal_carga' canal.pk %}">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                </td>
+
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Tabla con la configuración de los setpoints -->
+        <table class="table table-striped borde">
+          <thead>
+              <tr>
+                  <th>Tipo</th>
+                  <th>Valor</th>
+                  <th>Habilitada</th>
+                  <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for alarma in canal.alarmas.all %}
+              <tr>
+                  <td>{{ alarma.tipo }}</td>
+                  <td>{{ alarma.valor }}</td>
+                  <td>{{ alarma.habilitada }}</td>
+                  <td>
+                    <button type="button" class="btn boton-celda" id="alarma_carga" data-toggle="modal" data-target="#modal_alarma_carga" data-url="{% url 'edit_alarma_carga' alarma.pk %}">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="modal fade" id="modal_carga" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div id="modal-carga"></div> <!-- Aquí se cargará el formulario -->
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modal_alarma_carga" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div id="modal-alarma-carga"></div> <!-- Aquí se cargará el formulario -->
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+
+       
+    <div>
+  </div>
+</body>
+
+{% endblock contenedor %}
+
+{% block extra_js %}
+
+  <script>
+
+    $(document).ready(function () {
+      $('button[id="carga"]').on('click', function () {
+          const url = $(this).data('url');  // URL del formulario
+          $('#modal-carga').load(url);    // Cargar la vista en el modal
+      });
+
+      $('button[id="alarma_carga"]').on('click', function () {
+        const url = $(this).data('url');  // URL del formulario
+        $('#modal-alarma-carga').load(url);    // Cargar la vista en el modal
+      });
+    
+      $('button[id="eh"]').on('click', function () {
+        const url2 = $(this).data('url');  // URL del formulario
+        console.log(url2)
+        $('#modal-eh').load(url2);    // Cargar la vista en el modal
+    });
+    });
+
+  </script>
+  
+{% endblock extra_js %} 

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Configuración{% endblock %}
+
+{% block contenedor %}
+
+<body>
+
+  <div class="p-2 borde color panel-izquierdo">Panel Izquierdo</div>
+  <div class="p-2 borde color flex-grow-1">
+
+      <div class="p-2 borde color chart-1 sep-bloque">
+
+
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="abrir_modal('{% url 'modal_edicion' %}')">
+          Launch demo modal
+        </button> 
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal_edicion" tabindex="-1" role="dialog">
+        </div>
+      </div>
+
+      <div class="cont_grafico">
+        <div>
+          {{figa | safe}}
+        </div>
+
+        <div class="cont_grafico">
+          {{figb | safe}}
+        </div>
+ 
+      </div>
+
+  </div> 
+
+
+</body>
+
+{% endblock contenedor %}
+
+{% block extra_js %}
+  <script type="text/javascript">
+    function abrir_modal(url) {
+      $('#modal_edicion').load(url, function(){
+        $(this).modal('show')
+      });
+    }
+
+  </script>
+{% endblock extra_js %}

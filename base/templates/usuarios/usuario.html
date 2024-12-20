@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+
+{% block title %}  Detalle {% endblock %}
+
+{% block content %}
+  <h1>{{ usuario.fname }} {{ usuario.lname }}</h1>
+  
+  <p>Phone {{ usuario.phone }}</p>
+  
+  <p>Back to <a href="/usuario">Usuario</a></p>
+  
+{% endblock %}

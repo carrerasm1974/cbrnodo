@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+}
+
+.form-signin {
+  max-width: 360px;
+  padding: 3rem;
+  position: relative;
+}
+
+.top {
+  padding: 1rem;
+}
+
+.mg-0 {
+  margin: 0px !important;
+  vertical-align: middle;
+ }
+
+
+

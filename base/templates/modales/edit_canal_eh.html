@@ -1,0 +1,18 @@
+<form method="post" action="{{ action }}">
+
+  <div class="modal-header">
+    <h5 class="modal-title">Editar canal eh</h5>
+  </div>
+
+  <div class="modal-body">
+      {% csrf_token %}
+      {{ form.as_p }}
+    </div> 
+    
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn btn-primary">Editar</button>
+  </div> 
+
+</form>
+    

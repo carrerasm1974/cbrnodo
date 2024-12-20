@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block contenedor %}
+
+    <div class="container">
+      <h2>Usuarios</h2>          
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in usuarios %}
+            <tr>
+              <td>x.username</td>
+              <td>x.last_login</td>
+              <td><button type="button" class="btn btn-primary">Editar</button></td>
+              <td><button type="button" class="btn btn-danger">Borrar</button></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
+{% endblock contenedor %}

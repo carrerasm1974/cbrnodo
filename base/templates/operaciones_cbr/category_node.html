@@ -1,0 +1,10 @@
+<li>
+    {{ category.name }}
+    {% if category.children %}
+        <ul>
+            {% for child in category.children %}
+                {% include "operaciones_cbr/category_node.html" with category=child %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

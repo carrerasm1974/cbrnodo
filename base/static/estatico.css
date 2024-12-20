@@ -1,0 +1,50 @@
+html,
+
+body {
+  height: 100%;
+}
+
+.titulo-seccion {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.form-signin {
+  max-width: 500px;
+  padding: 3rem;
+  position: relative;
+}
+
+.top {
+  padding: 1rem;
+}
+
+.borde {
+  margin: 0.5rem;
+}
+
+.color {
+  background-color: rgba(0, 0, 255, 0.171);
+}
+
+.panel-izquierdo {
+  width: 480px;
+}
+
+.sep-bloque {
+  margin-bottom: 1rem;
+}
+
+td, th{
+  width:150px !important;
+  height:10px !important;
+  max-width:150px !important;
+  min-width:150px !important;
+  font-size: small;
+  padding: 3px !important;
+}
+
+.boton-celda {
+  padding: 0px !important;
+}
+

@@ -1,0 +1,97 @@
+
+
+{% extends "master.html" %}
+
+
+{% block principal %}
+
+<body>
+
+  <div class="p-2 borde color panel-izquierdo">Item1</div>
+  <div class="p-2 borde color flex-grow-1">
+      <div class="d-flex color sep-bloque">
+          <div class="flex-fill p-2 color">
+            
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ room_name|json_script:"room-name" }}</h5>
+                    <p class="card-text">    
+                      <textarea class="flex-fill" id="mensaje"></textarea><br>
+                      </p>
+                      <button type="submit" id="btn_enviar" value="btn_enviar" class="btn btn-primary">Enviar</button>
+
+                      <p class="card-text">    
+                        <textarea class="flex-fill" id="chat-log"></textarea><br>
+                        </p>
+                  </div>
+                </div>
+              </div>
+              {% comment %} <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Sala</h5>
+                    <p class="card-text">{% lorem 30 w%} </p>
+                    <a href="#" class="btn btn-primary btn-sm">Ir</a>
+                  </div>
+                </div>
+              </div> {% endcomment %}
+            </div>
+
+          </div>
+      </div>
+      <div class="p-2 borde color chart-1 sep-bloque">Item 4</div>
+      <div class="p-2 borde color chart-1">Item 5</div>
+  </div> 
+
+</body>
+
+
+
+<script>
+  {% comment %} const roomName = JSON.parse(document.getElementById('room-name').textContent); {% endcomment %}
+
+  {% comment %} const chatSocket = new WebSocket(
+      'ws://'
+      + window.location.host
+      + '/minodo/'
+      + roomName
+      + '/'
+  ); {% endcomment %}
+
+  const chatSocket = new WebSocket(
+    'ws://'
+    + window.location.host
+    + '/nodows/200/'
+);
+
+  chatSocket.onmessage = function(e) {
+      const data = JSON.parse(e.data);
+      document.querySelector('#chat-log').value += (data.message + '\n');
+  }; 
+
+  chatSocket.onclose = function(e) {
+      console.error('Chat socket closed unexpectedly');
+  };
+
+  {% comment %} document.querySelector('#chat-message-input').focus(); {% endcomment %}
+
+  {% comment %} document.querySelector('#chat-message-input').onkeyup = function(e) {
+      if (e.key === 'Enter') {  // enter, return
+          document.querySelector('#chat-message-submit').click();
+      }
+  }; {% endcomment %}
+
+  document.querySelector('#btn_enviar').onclick = function(e) {
+      const messageInputDom = document.querySelector('#mensaje');
+      console.log(messageInputDom)
+      const message = messageInputDom.value;
+      chatSocket.send(JSON.stringify({
+          'message': message
+      }));
+      messageInputDom.value = '';
+  };
+</script>
+
+{% endblock %}

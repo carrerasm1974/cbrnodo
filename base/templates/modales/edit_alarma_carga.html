@@ -1,0 +1,40 @@
+<form method="post" action="{{ action }}">
+
+  <div class="modal-header">
+    <h5 class="modal-title">Editar alarma carga</h5>
+  </div>
+
+  <div class="modal-body">
+      {% csrf_token %}
+      <div class="row">
+
+        <div class="col">  
+
+          <label for="tipo" class="form-label">Tipo</label>
+          <select class="form-select" id="tipo" name="tipo">
+            {% for value, text in form.tipo.field.choices %}
+              {% if value != "" %}<option value="{{ value }}" {% if value == form.tipo.value %}selected{% endif %}>{{ text }}</option>{% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col"> 
+          <label for="valor" class="form-label">Valor</label>
+          <input type="number" class="form-control" id="valor" name="valor" value="{{ form.valor.value }}" required>
+        </div>
+
+        <div class="col"> 
+          <input type="checkbox" name="habilitada" id="habilitada" {% if form.habilitada.value %}checked{% endif %}>
+          <label class="form-check-label" for="habilitada">Habilitada</label>
+
+      </div>
+
+  </div> 
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  </div> 
+
+</form>
+    
