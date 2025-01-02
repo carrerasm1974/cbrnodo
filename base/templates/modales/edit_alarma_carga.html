@@ -9,9 +9,8 @@
       <div class="row">
 
         <div class="col">  
-
-          <label for="tipo" class="form-label">Tipo</label>
-          <select class="form-select" id="tipo" name="tipo">
+          <label for="tipo" class="col-form-label col-form-label-sm">Tipo</label>
+          <select class="form-select form-select-sm" id="tipo" name="tipo">
             {% for value, text in form.tipo.field.choices %}
               {% if value != "" %}<option value="{{ value }}" {% if value == form.tipo.value %}selected{% endif %}>{{ text }}</option>{% endif %}
             {% endfor %}
@@ -19,22 +18,34 @@
         </div>
 
         <div class="col"> 
-          <label for="valor" class="form-label">Valor</label>
-          <input type="number" class="form-control" id="valor" name="valor" value="{{ form.valor.value }}" required>
+          <label for="valor" class="col-form-label col-form-label-sm">Valor</label>
+          <input type="number" class="form-control form-control-sm" id="valor" name="valor" value="{{ form.valor.value }}" required>
         </div>
 
-        <div class="col"> 
-          <input type="checkbox" name="habilitada" id="habilitada" {% if form.habilitada.value %}checked{% endif %}>
-          <label class="form-check-label" for="habilitada">Habilitada</label>
+      </div>
+      
+      <div class="col"> 
+        <input type="checkbox" name="habilitada" id="habilitada" {% if form.habilitada.value %}checked{% endif %}>
+        <label class="form-check-label small" for="habilitada">Habilitada</label>
+      </div>
 
+      <div role="group">
+        {% for value, text in form.tipo.field.choices %}
+          {% if value != "" %}
+          <div class="form-check small">  
+            <input class="form-check-input" value={{value}} type="radio" name="tipo" id="tipo" {% if value == form.tipo.value %}checked{% endif %}>
+            <label class="form-check-label">{{text}}</label>
+          </div>
+          {%endif%}
+        {% endfor %}
       </div>
 
   </div> 
   
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-  </div> 
+    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
+  </div>
 
 </form>
     

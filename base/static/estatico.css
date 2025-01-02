@@ -23,6 +23,14 @@ body {
   margin: 0.5rem;
 }
 
+.pd-top-05 {
+  padding-top: 0.5rem;
+}
+
+.pd-top-10 {
+  padding-top: 1rem;
+}
+
 .color {
   background-color: rgba(0, 0, 255, 0.171);
 }
@@ -48,3 +56,28 @@ td, th{
   padding: 0px !important;
 }
 
+.form-label {
+  font-size: small !important;
+}
+
+.navbar-sec {
+  height: 40px !important;
+}
+
+.navbar-link-sec {
+  font-size: small;
+  font-weight: 400;
+}
+
+.navbar-link-sec:first-child {
+  margin-left: 60px;
+}
+
+.navbar-prim {
+  height: 40px !important;
+}
+
+.navbar-link-prim {
+  font-weight: 600;
+  color: aliceblue;
+}

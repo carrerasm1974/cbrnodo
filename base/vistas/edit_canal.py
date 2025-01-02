@@ -14,7 +14,7 @@ class edit_canal_carga(BSModalUpdateView):
     model = CanalAnalogicoCarga
     template_name = 'modales/edit_canal_carga.html'
     form_class = FormEditarCanalCarga
-    success_url = reverse_lazy('config_canales')  # Redirige después de guardar
+    success_url = reverse_lazy('configuracion')  # Redirige después de guardar
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,7 +25,7 @@ class edit_alarma_carga(BSModalUpdateView):
     model = AlarmaCargaSetpoint
     template_name = 'modales/edit_alarma_carga.html'
     form_class = FormEditarAlarmaCarga
-    success_url = reverse_lazy('config_canales')  # Redirige después de guardar
+    success_url = reverse_lazy('configuracion')  # Redirige después de guardar
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

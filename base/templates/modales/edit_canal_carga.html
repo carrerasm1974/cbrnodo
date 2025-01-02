@@ -1,32 +1,62 @@
 <form method="post" action="{{ action }}">
+  {% csrf_token %}
 
   <div class="modal-header">
-    <h5 class="modal-title">Editar canal carga</h5>
+    <h5 class="modal-title">Editar {{ form.nombre.value }}</h5>
   </div>
 
   <div class="modal-body">
-      {% csrf_token %}
-
+      
       <div class="row">
-        <div class="col">  
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" name="nombre" value="{{ form.nombre.value }}" required>
-        </div>
         <div class="col"> 
-          <label for="escala" class="form-label">Escala</label>
-          <input type="text" class="form-control" id="escala" name="escala" value="{{ form.escala.value }}" required>
+          <label for="escala" class="col-form-label col-form-label-sm">Escala</label>
+          <input type="text" class="form-control form-control-sm" id="escala" name="escala" value="{{ form.escala.value }}" required>
         </div>
         <div class="col"> 
           <label for="unidad" class="form-label">Unidad</label>
-          <input type="text" class="form-control" id="unidad" name="unidad" value="{{ form.unidad.value }}" required>
+          <input type="text" class="form-control form-control-sm" id="unidad" name="unidad" value="{{ form.unidad.value }}" required>
         </div>
-      </div>+
+      </div>
+
+      <div class="row pd-top-10">
+        <div class="col"> 
+          <label for="escala" class="col-form-label col-form-label-sm">Escala</label>
+          <input type="text" class="form-control form-control-sm" id="escala" name="escala" value="{{ form.escala.value }}" required>
+        </div>
+        <div class="col"> 
+          <label for="unidad" class="form-label">Unidad</label>
+          <input type="text" class="form-control form-control-sm" id="unidad" name="unidad" value="{{ form.unidad.value }}" required>
+        </div>
+      </div>
+
+      <div class="row pd-top-10">
+        <div class="col"> 
+          <label for="escala" class="col-form-label col-form-label-sm">Escala</label>
+          <input type="text" class="form-control form-control-sm" id="escala" name="escala" value="{{ form.escala.value }}" required>
+        </div>
+
+        <div class="col"> 
+          <label for="unidad" class="form-label">Unidad</label>
+          <input type="text" class="form-control form-control-sm" id="unidad" name="unidad" value="{{ form.unidad.value }}" required>
+        </div>
+
+        <div class="col"> 
+          <label for="unidad" class="form-label">Unidad</label>
+          <input type="text" class="form-control form-control-sm" id="unidad" name="unidad" value="{{ form.unidad.value }}" required>
+        </div>
+
+        <div class="col"> 
+          <label for="unidad" class="form-label">Unidad</label>
+          <input type="text" class="form-control form-control-sm" id="unidad" name="unidad" value="{{ form.unidad.value }}" required>
+        </div>
+      </div>
+
 
   </div> 
     
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+    <button type="submit" class="btn btn-primary btn-sm">Guardar cambios</button>
   </div> 
 
 </form>

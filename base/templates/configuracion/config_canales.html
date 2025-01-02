@@ -1,13 +1,13 @@
+
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Configuración{% endblock %}
-
 {% block contenedor %}
 
-
 <body>
+
   <div class="container">
+
     <div class="d-flex flex-column p-2 borde flex-grow-1 ">
       
         <h3 class="borde">Configuración Canales</h3>    
@@ -34,7 +34,7 @@
                 <td>{{ canal.escala }}</td>
                 <td>{{ canal.unidad }}</td>
                 <td>{{ canal.valor_actual }}</td>
-                <td>{{ canal.fecha_actualizacion }}</td>
+                <td>{{ canal.fecha_actualizacion }} {{ canal.unidad }}</td>
                 <td>
                   <button type="button" class="btn boton-celda" id="carga" data-toggle="modal" data-target="#modal_carga" data-url="{% url 'edit_canal_carga' canal.pk %}">
                     <i class="fa fa-edit"></i>
@@ -46,51 +46,60 @@
         </table>
 
         <!-- Tabla con la configuración de los setpoints -->
-        <table class="table table-striped borde">
-          <thead>
-              <tr>
-                  <th>Tipo</th>
-                  <th>Valor</th>
-                  <th>Habilitada</th>
-                  <th>Acciones</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% for alarma in canal.alarmas.all %}
-              <tr>
-                  <td>{{ alarma.tipo }}</td>
-                  <td>{{ alarma.valor }}</td>
-                  <td>{{ alarma.habilitada }}</td>
-                  <td>
-                    <button type="button" class="btn boton-celda" id="alarma_carga" data-toggle="modal" data-target="#modal_alarma_carga" data-url="{% url 'edit_alarma_carga' alarma.pk %}">
-                      <i class="fa fa-edit"></i>
-                    </button>
-                  </td>
-              </tr>
-              {% endfor %}
-          </tbody>
-        </table>
+        <div class="row">
+          <div class="col">
 
-        <div class="modal fade" id="modal_carga" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div id="modal-carga"></div> <!-- Aquí se cargará el formulario -->
-            </div>
           </div>
+          
+          <table class=" col table table-striped borde">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Habilitada</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alarma in canal.alarmas.all %}
+                <tr>
+                    <td>{{ alarma.tipo }}</td>
+                    <td>{{ alarma.valor }}</td>
+                    <td>{% if alarma.habilitada %}Habilitado{%else%}Deshabilitado{%endif%}</td>
+                    <td>
+                      <button type="button" class="btn boton-celda" id="alarma_carga" data-toggle="modal" data-target="#modal_alarma_carga" data-url="{% url 'edit_alarma_carga' alarma.pk %}">
+                        <i class="fa fa-edit"></i>
+                      </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
         </div>
 
-        <div class="modal fade" id="modal_alarma_carga" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div id="modal-alarma-carga"></div> <!-- Aquí se cargará el formulario -->
-            </div>
-          </div>
-        </div>
         {%endfor%}
 
        
     <div>
+      
   </div>
+
+  <div class="modal fade" id="modal_carga" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div id="modal-carga"></div> <!-- Aquí se cargará el formulario -->
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal_alarma_carga" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div id="modal-alarma-carga"></div> <!-- Aquí se cargará el formulario -->
+      </div>
+    </div>
+  </div>
+
 </body>
 
 {% endblock contenedor %}

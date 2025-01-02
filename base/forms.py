@@ -15,6 +15,9 @@ class FormEditarAlarmaCarga(BSModalModelForm):
     class Meta:
         model = AlarmaCargaSetpoint
         fields = ['tipo', 'valor', 'habilitada']
+        widgets = {
+            'tipo': forms.RadioSelect
+        }
         
 class FormEditarCanalEH(BSModalModelForm):
     class Meta:

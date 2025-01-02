@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import JsonResponse
+from django.urls import reverse
 
 import socket
 
@@ -8,6 +9,7 @@ import socket
 def home(request): 
     ipadd = socket.gethostbyname(socket.gethostname())
     context = {
+
     }
     return render(request, 'home.html', context)
 
@@ -25,7 +27,5 @@ def signup(request):
 def login(request):
     form = AuthenticationForm()
     return render(request, "registration/login.html", {"form" : form})
-
-
 
 
